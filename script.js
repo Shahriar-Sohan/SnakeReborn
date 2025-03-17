@@ -21,16 +21,16 @@ function gameStart() {
 }
 
 function clearBoard( ctx, gameBoard ) {
-    ctx.clearRect(0, 0, gameBoard.width, gameBoard.height);  // Clear the board based on the game size
+    ctx.clearRect(0, 0, gameBoard.width, gameBoard.height);  
 }
 
 function nextTick( ctx, gameBoard, speed ) {
     if (gameConfig.gameRunning) {
-        clearBoard( ctx, gameBoard );  // Clear the board for the next frame
-        Snake.draw(ctx);  // Draw the snake
+        clearBoard( ctx, gameBoard ); 
+        Snake.draw(ctx);  
         Snake.move(speed, gameBoard )
 
-        // Use requestAnimationFrame for the next frame
+        
         requestAnimationFrame(() => nextTick( ctx, gameBoard, speed ));
     }
 }

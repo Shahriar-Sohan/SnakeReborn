@@ -1,5 +1,5 @@
 export const gameConfig = (() => {
-    // Access DOM elements
+    
     const gameBoard = document.getElementById('gameBoard');
     const scoreDisplay = document.getElementById('scoreDisplay');
     const resetBtn = document.getElementById('resetBtn');
@@ -10,7 +10,7 @@ export const gameConfig = (() => {
         throw new Error('Essential HTML elements are missing from the DOM.');
     }
 
-    // Set up the canvas contex
+    
     const ctx = gameBoard.getContext('2d');
 
     return {
@@ -19,9 +19,7 @@ export const gameConfig = (() => {
         resetBtn,
         ctx,
         
-        unitSize: 24,
         speed: 3,
-        objSize: 20,
         gameRunning: false,
         score: 0
     };

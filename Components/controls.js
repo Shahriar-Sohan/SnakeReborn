@@ -3,7 +3,7 @@ import { Snake } from "./snake.js";
 import gameStart from "../script.js";
 
 function changeDirection(e) {
-    const { direction } = Snake; // Extract the direction object from Snake
+    const { direction } = Snake; 
 
     const keyPressed = e.keyCode;
     const SPACEBAR = 32;
@@ -15,7 +15,6 @@ function changeDirection(e) {
     switch (keyPressed) {
         case UP:
             console.log("up");
-            // Ensure the snake can't go in the opposite direction
             if (!direction.down) {
                 direction.up = true;
                 direction.down = false;
@@ -55,7 +54,6 @@ function changeDirection(e) {
             break;
 
         case SPACEBAR:
-            // Call the gameStart function if needed
             if (!gameConfig.gameRunning) {
                 gameStart();
             }
