@@ -1,53 +1,69 @@
-import gameStart from "../script";
+import { gameConfig } from "./gameConfig.js";
+import { Snake } from "./snake.js";
+import gameStart from "../script.js";
 
+function changeDirection(e) {
+    const { direction } = Snake; // Extract the direction object from Snake
 
-function changeDirection(e){
-
-
-
-
-
-    const keyPressed = e.keyCode
+    const keyPressed = e.keyCode;
     const SPACEBAR = 32;
     const UP = 38;
     const DOWN = 40;
     const LEFT = 37;
     const RIGHT = 39;
+
     switch (keyPressed) {
         case UP:
-            console.log("up")
-            yAxis = -speed
-            xAxis = 0
-            
+            console.log("up");
+            // Ensure the snake can't go in the opposite direction
+            if (!direction.down) {
+                direction.up = true;
+                direction.down = false;
+                direction.left = false;
+                direction.right = false;
+            }
             break;
 
         case DOWN:
-            console.log("down")
-            yAxis = speed
-            xAxis = 0
-            
+            console.log("down");
+            if (!direction.up) {
+                direction.down = true;
+                direction.up = false;
+                direction.left = false;
+                direction.right = false;
+            }
             break;
 
         case LEFT:
-            console.log("left")
-            yAxis = 0
-            xAxis = -speed
-            
+            console.log("left");
+            if (!direction.right) {
+                direction.left = true;
+                direction.up = false;
+                direction.down = false;
+                direction.right = false;
+            }
             break;
 
         case RIGHT:
-            console.log("right")
-            yAxis = 0
-            xAxis = speed
-        
+            console.log("right");
+            if (!direction.left) {
+                direction.right = true;
+                direction.up = false;
+                direction.down = false;
+                direction.left = false;
+            }
             break;
+
         case SPACEBAR:
-            gameStart()
+            // Call the gameStart function if needed
+            if (!gameConfig.gameRunning) {
+                gameStart();
+            }
             break;
-        
+
         default:
             break;
     }
 }
 
-export default changeDirection
+export default changeDirection;
